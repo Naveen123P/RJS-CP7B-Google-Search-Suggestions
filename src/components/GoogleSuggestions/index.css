@@ -1,0 +1,21 @@
+/* Write your CSS here */
+.bg-container1 {
+  height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.img {
+  height: 200px;
+  width: 500px;
+}
+.search-img {
+  height: 20px;
+  width: 20px;
+}
+.search-container {
+  width: 70%;
+  border-radius: 20px;
+  box-shadow: black;
+}
