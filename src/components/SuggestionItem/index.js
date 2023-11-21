@@ -1,11 +1,27 @@
 // Write your code here
+// Write your code here
 import './index.css'
 
 const SuggestionItem = props => {
-  const {eachItem} = props
-  const {suggestion} = eachItem
+  const {eachItem, arrowFunction} = props
+  const {id, suggestion} = eachItem
 
-  return <li>{suggestion}</li>
+  const toArrow = () => {
+    arrowFunction(id)
+  }
+
+  return (
+    <li>
+      <p>{suggestion}</p>
+      <button type="button" onClick={toArrow} className="button">
+        <img
+          src="https://assets.ccbp.in/frontend/react-js/diagonal-arrow-left-up.png"
+          className="arrow-img"
+          alt="arrow"
+        />
+      </button>
+    </li>
+  )
 }
 
 export default SuggestionItem
