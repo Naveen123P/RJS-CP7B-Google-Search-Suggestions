@@ -16,28 +16,32 @@ class GoogleSuggestions extends Component {
   state = {searchInput: '', suggestionsList: initialSuggestionsList}
 
   onChangeSearchInput = event => {
-    const {searchInput, suggestionsList} = this.state
     this.setState({searchInput: event.target.value})
-    const filteredList = suggestionsList.filter(each =>
-      each.suggestion.toLowerCase().includes(searchInput.toLowerCase()),
-    )
-    this.setState({suggestionsList: filteredList})
+  }
+
+  arrow = id => {
+    const {suggestionsList} = this.state
+    const onClickArrowItem = suggestionsList.filter(each => each.id === id)
+    this.setState({searchInput: onClickArrowItem[0].suggestion})
   }
 
   render() {
     const {searchInput, suggestionsList} = this.state
+    const searchResult = suggestionsList.filter(each =>
+      each.suggestion.toLowerCase().includes(searchInput.toLowerCase()),
+    )
     return (
       <div className="bg-container1">
         <div className="bg-container2">
           <img
             src="https://assets.ccbp.in/frontend/react-js/google-logo.png"
-            alt="google"
+            alt="google logo"
             className="img"
           />
           <div className="search-container">
             <img
               src="https://assets.ccbp.in/frontend/react-js/google-search-icon.png"
-              alt="search"
+              alt="search icon"
               className="search-img"
             />
             <input
@@ -46,8 +50,12 @@ class GoogleSuggestions extends Component {
               onChange={this.onChangeSearchInput}
             />
             <ul className="">
-              {suggestionsList.map(each => (
-                <SuggestionItem eachItem={each} key={each.id} />
+              {searchResult.map(each => (
+                <SuggestionItem
+                  eachItem={each}
+                  key={each.id}
+                  arrowFunction={this.arrow}
+                />
               ))}
             </ul>
           </div>
