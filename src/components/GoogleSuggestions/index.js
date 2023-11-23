@@ -48,6 +48,7 @@ class GoogleSuggestions extends Component {
               type="search"
               placeholder="Search Google"
               onChange={this.onChangeSearchInput}
+              value={searchInput}
             />
             <ul className="">
               {searchResult.map(each => (
